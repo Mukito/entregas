@@ -6,25 +6,42 @@ import sqlite3
 import tkinter
 from tkinter import messagebox
 import requests
+#-------------------------------------------------
+#from tkinter import PhotoImage
+#-------------------------------------------------
 
 banco = sqlite3.connect('banco.db')
 cursor = banco.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS banco (id INTEGER PRIMARY KEY AUTOINCREMENT, nome_cliente TEXT, contato TEXT, endereco TEXT, pedido TEXT, data_pedido TEXT, data_prev_entrega TEXT, status TEXT)")
 
-janela = tk.CTk()
-janela.geometry("625x588+311+21")
-janela.title('Gerenciamento')
+janela = tk.CTk()                   # Inicializa a Janela
+janela.geometry("625x588+311+21")   # Define o tamanho da Janela
+janela.title('Gerenciamento')       # Defina o Titulo da Janela
 
-janela.resizable(False, False)
+#--------------------------------------------------------------------------------------------
+try:
+    #icone = PhotoImage(file='drone_icon.png')       # Caminho relativo ou absoluto
+    #janela.iconphoto(False, icone)
+    janela.iconbitmap("drone.ico")
+    print("Icone carregado com sucesso!")
+except Exception as e:
+    print(f"Erro ao carregar o icone: {e}")
+#--------------------------------------------------------------------------------------------
+janela.resizable(False, False)      # Impede o redimensionamento da janela
 
+# Define o tema e a aparência
 tk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
 tk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
+# Cria um frame dentro da janela
 frame = tk.CTkFrame(janela)
 frame.pack(padx=5,pady=5)
 
+# Cria o rótulo (label) de "Entregas"
 label_logo = tk.CTkLabel(frame, text='Entregas', font=('', 70))
 label_logo.pack()
+
+#inicia o loop?
 
 gerenciamento_pedido = tk.CTkTabview(frame)
 gerenciamento_pedido.pack(padx=10, pady=10)
@@ -53,6 +70,16 @@ entry_endereco.grid(row=2, column=1, padx=5, pady=5)
 def janela_endereco():
     janela_edicao_endereco = tk.CTkToplevel(janela)
     janela_edicao_endereco.geometry('400+120')
+    #-----------------------------------------------
+    # Definir o ícone corretamente
+    try:
+        #icone_png = PhotoImage(file="drone.ico")  # Usar o arquivo .ico ou .png
+        #janela_edicao_endereco.iconphoto(False, icone_png)  # Definir o ícone para a janela secundária
+        janela_edicao_endereco.iconbitmap("drone.ico")  # Caminho correto para o arquivo .ico
+        print("Ícone .ico carregado com sucesso!")
+    except Exception as e:
+        print(f"Erro ao carregar o ícone .ico: {e}")
+    #-----------------------------------------------
     janela_edicao_endereco.grab_set()
     janela_edicao_endereco.title('Endereço')
     janela_edicao_endereco.resizable(False, False)
@@ -140,6 +167,9 @@ entry_produto.grid(row=3, column=1, padx=5, pady=5)
 def pedido_detalhado():
     janela_pedido_detalhado = tk.CTkToplevel(janela)
     janela_pedido_detalhado.geometry('280+100')
+    #----------------------------------------------------------
+    janela_pedido_detalhado.iconbitmap("drone.ico")
+    #----------------------------------------------------------
     janela_pedido_detalhado.title('Pedido Detalhado')
     janela_pedido_detalhado.grab_set()
     janela_pedido_detalhado.resizable(False, False)
