@@ -1,14 +1,14 @@
-Aplicativo de entrega:
+Aplicativo de entrega:\n
 
-Criar Pedidos
+Criar Pedidos\n
 ![image](https://github.com/user-attachments/assets/2247bda6-1354-4ec2-94b9-b76c0b248b49)
+\n
 
-
-Detalhe do Pedido 
-Adulto
+Detalhe do Pedido\n 
+Adulto\n
 ![image](https://github.com/user-attachments/assets/a62a9a33-4148-468f-a5e4-82f489e41ab7)
 
-Infantiil
+Infantiil\n
 ![image](https://github.com/user-attachments/assets/c1fc79b0-84f7-4a78-bd2b-eeef772b6569)
 
 Pedido realizado
